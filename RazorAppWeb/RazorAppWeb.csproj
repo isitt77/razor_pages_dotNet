@@ -13,12 +13,12 @@
     <None Remove="Data\" />
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
-    <None Remove="Pages\Category\" />
+    <None Remove="Pages\Categories\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
     <Folder Include="Data\" />
-    <Folder Include="Pages\Category\" />
+    <Folder Include="Pages\Categories\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
