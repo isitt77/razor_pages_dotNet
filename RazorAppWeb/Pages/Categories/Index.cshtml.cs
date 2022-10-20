@@ -11,7 +11,10 @@ namespace RazorAppWeb.Pages.Categories
 {
     public class IndexModel : PageModel
     {
-        //public IEnumerable<Category> Categories { get; set; }
+        // Declared outside OnGet() because there is no
+        // return View() to pass the object nto the page
+        // template like we did in the MVC version.
+        public IEnumerable<Category> Categories { get; set; }
 
         private readonly ApplicationDbContext _db;
 
@@ -22,7 +25,7 @@ namespace RazorAppWeb.Pages.Categories
 
         public void OnGet()
         {
-            IEnumerable<Category> Categories = _db.Categories;
+            Categories = _db.Categories;
         }
     }
 }
