@@ -9,22 +9,23 @@
         </div>
         <div asp-validation-summary="All" class="text-warning"></div>
         <div class="mb-3">
-            <label for="categoryName" class="form-label">Category Name</label>
-            <input type="text" name="categoryName" id="categoryName" class="form-control" />
-            @*<span asp-validation-for="Name" class="text-warning"></span>*@
+            <label asp-for="category.Name" class="form-label"></label>
+            <input asp-for="@Model.category.Name" class="form-control" />
+            <span asp-validation-for="category.Name" class="text-warning"></span>
         </div>
         <div class="mb-3">
-            <label for="displayOrder" class="form-label">Display Order</label>
-            <input type="text" name="displayOrder" id="displayOrder" class="form-control" />
-            @*<span asp-validation-for="DisplayOrder" class="text-warning"></span>*@
+            <label asp-for="category.DisplayOrder" class="form-label"></label>
+            <input asp-for="@Model.category.DisplayOrder" class="form-control" />
+            <span asp-validation-for="category.DisplayOrder" class="text-warning"></span>
         </div>
         <button type="submit" class="btn btn-success mt-3 me-3">Submit</button>
         <a asp-page="index" class="btn btn-secondary mt-3">Back to Category List</a>
     </div>
 </form>
 
-@*@section Scripts {
+@section Scripts {
     @{
         // Runs client side validation so server isn't accessed.
         <partial name="_ValidationScriptsPartial" />
-    }*@
+    }
+}
