@@ -4,16 +4,35 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RazorAppWeb.Data;
 using RazorAppWeb.Model;
 
 namespace RazorAppWeb.Pages.Categories
 {
     public class CreateModel : PageModel
     {
+
+        private readonly ApplicationDbContext _db;
+
+        [BindProperty]
         public Category category { get; set; }
+
+        public CreateModel(ApplicationDbContext db)
+        {
+            _db = db;
+        }
+
 
         public void OnGet()
         {
+        }
+
+        public async Task<IActionResult> OnPost()
+        {
+            //Console.WriteLine("New Object!!! --> " + obj);
+            await _db.Categories.AddAsync(category);
+            await _db.SaveChangesAsync();
+            return RedirectToPage("Index");
         }
     }
 }
