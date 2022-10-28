@@ -29,10 +29,15 @@ namespace RazorAppWeb.Pages.Categories
 
         public async Task<IActionResult> OnPost()
         {
-            //Console.WriteLine("New Object!!! --> " + obj);
-            await _db.Categories.AddAsync(category);
-            await _db.SaveChangesAsync();
-            return RedirectToPage("Index");
+            // ModelState is only hit when there are no client side validations.
+            Console.WriteLine("isValidModelState: " + ModelState.IsValid);
+            if (ModelState.IsValid)
+            {
+                await _db.Categories.AddAsync(category);
+                await _db.SaveChangesAsync();
+                return RedirectToPage("Index");
+            }
+            return Page();
         }
     }
 }
