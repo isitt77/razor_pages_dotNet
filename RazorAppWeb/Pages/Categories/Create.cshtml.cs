@@ -29,6 +29,11 @@ namespace RazorAppWeb.Pages.Categories
 
         public async Task<IActionResult> OnPost()
         {
+            if (category.Name == category.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError(string.Empty, "Name and " +
+                    "Display Order cannot be the same.");
+            }
             // ModelState is only hit when there are no client side validations.
             Console.WriteLine("isValidModelState: " + ModelState.IsValid);
             if (ModelState.IsValid)
