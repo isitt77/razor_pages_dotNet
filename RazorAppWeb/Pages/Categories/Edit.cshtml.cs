@@ -23,9 +23,11 @@ namespace RazorAppWeb.Pages.Categories
         }
 
 
-        public void OnGet()
+        public void OnGet(int id)
         {
+            category = _db.Categories.Find(id);
         }
+
 
         public async Task<IActionResult> OnPost()
         {
@@ -38,7 +40,7 @@ namespace RazorAppWeb.Pages.Categories
             Console.WriteLine("isValidModelState: " + ModelState.IsValid);
             if (ModelState.IsValid)
             {
-                await _db.Categories.AddAsync(category);
+                _db.Categories.Update(category);
                 await _db.SaveChangesAsync();
                 return RedirectToPage("Index");
             }
