@@ -42,6 +42,7 @@ namespace RazorAppWeb.Pages.Categories
             {
                 _db.Categories.Update(category);
                 await _db.SaveChangesAsync();
+                TempData["success"] = "You've successfully edited a category.";
                 return RedirectToPage("Index");
             }
             return Page();
