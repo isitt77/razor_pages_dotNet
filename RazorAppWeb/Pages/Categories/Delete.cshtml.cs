@@ -29,15 +29,16 @@ namespace RazorAppWeb.Pages.Categories
         }
 
 
-        public async Task<IActionResult> OnPost(int? id)
+        public async Task<IActionResult> OnPost()
         {
-            if (id == null)
+            Category categoryFromDb = _db.Categories.Find(category.Id);
+            if (categoryFromDb != null)
             {
-                return NotFound();
+                _db.Categories.Remove(categoryFromDb);
+                await _db.SaveChangesAsync();
+                return RedirectToPage("Index");
             }
-            _db.Categories.Remove(category);
-            await _db.SaveChangesAsync();
-            return RedirectToPage("Index");
+            return Page();
         }
     }
 }
