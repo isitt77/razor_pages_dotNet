@@ -1,0 +1,32 @@
+﻿@page
+@model RazorAppWeb.Pages.Categories.DeleteModel
+
+<form method="post">
+    <input hidden asp-for="category.Id" />
+    <div class="border p-3 mt-5">
+        <div class="row pb-2">
+            <h2 class="text-info">Delete Category</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All" class="text-warning"></div>
+        <div class="mb-3">
+            <label asp-for="category.Name" class="form-label"></label>
+            <input asp-for="@Model.category.Name" class="form-control" disabled />
+            <span asp-validation-for="category.Name" class="text-warning"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="category.DisplayOrder" class="form-label"></label>
+            <input asp-for="@Model.category.DisplayOrder" class="form-control" disabled />
+            <span asp-validation-for="category.DisplayOrder" class="text-warning"></span>
+        </div>
+        <button type="submit" class="btn btn-danger mt-3 me-3">Delete</button>
+        <a asp-page="index" class="btn btn-secondary mt-3">Back to Category List</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        // Runs client side validation so server isn't accessed.
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
